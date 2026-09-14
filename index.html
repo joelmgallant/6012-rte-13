@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><title>6012 Rte 13 — New Glasgow, PEI</title>
+<style>:root {
+  --bg: #fbfaf8; --surface: #ffffff; --ink: #1c1a17; --muted: #6b6560;
+  --line: #e4dfd8; --accent: #1f5c4a; --accent-ink: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17181a; --surface: #1f2124; --ink: #ecebe8; --muted: #a6a29c;
+    --line: #32353a; --accent: #6fc0a4; --accent-ink: #10221c;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17181a; --surface: #1f2124; --ink: #ecebe8; --muted: #a6a29c;
+  --line: #32353a; --accent: #6fc0a4; --accent-ink: #10221c;
+}
+
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 68rem; margin: 0 auto; padding-inline: 20px; padding-block: 0 4rem; }
+h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.15; margin: 0.4em 0 0.2em; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); margin-top: 3rem; }
+section { border-top: 1px solid var(--line); }
+
+.hero-image { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
+.price { font-size: 2rem; font-weight: 600; color: var(--accent); margin: 0.2em 0; }
+.address { color: var(--muted); margin: 0; }
+.lede { color: var(--muted); max-width: 46rem; }
+
+.track-toggle { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.track-toggle button { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 8px 14px; border-radius: 999px; font: inherit; font-size: 0.9rem; cursor: pointer; }
+.track-toggle button.is-active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+.quick-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; color: var(--muted); }
+
+.level { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+.level h3 { margin: 0 0 0.4em; font-size: 1.05rem; }
+.level p { margin: 0; color: var(--muted); }
+
+.disclosure { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 10px; }
+.grid img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 8px; }
+
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 24px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+
+form { display: grid; gap: 12px; max-width: 34rem; }
+label { display: grid; gap: 4px; color: var(--muted); font-size: 0.9rem; }
+input, textarea { font: inherit; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); width: 100%; box-sizing: border-box; }
+button[type="submit"] { background: var(--accent); color: var(--accent-ink); border: 0; padding: 12px 20px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; justify-self: start; }
+
+footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; color: var(--muted); font-size: 0.85rem; }
+.always-disclosed { color: var(--ink); }
+.fine { font-size: 0.8rem; }
+
+@media (max-width: 640px) {
+  dl { grid-template-columns: 1fr; gap: 2px 0; }
+  dt { margin-top: 10px; }
+}
+</style>
+
+<main>
+  <header class="hero">
+    <img class="hero-image" src="photos/hero/01.jpg" alt="6012 Rte 13, New Glasgow PEI">
+    <div class="hero-text">
+      <div class="track-toggle" role="group" aria-label="Choose a perspective">
+        <button type="button" data-track="family" class="is-active" aria-pressed="true">A home for the whole family</button>
+        <button type="button" data-track="investor" aria-pressed="false">A three-unit property</button>
+      </div>
+      <h1 data-track-text="family">Three Homes Under One Roof</h1>
+      <h1 data-track-text="investor" hidden>Configured for Three Units, 15 Minutes from Cavendish</h1>
+      <p class="address">6012 Rte 13, New Glasgow, Prince Edward Island</p>
+      <p class="price">$674,900</p>
+      <ul class="quick-facts">
+        <li>7 bed</li>
+        <li>4 bath</li>
+        <li>5,568 sq ft</li>
+        <li>0.58 acres</li>
+        <li>River view</li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="levels">
+    <h2>Three fully developed levels</h2>
+    <p class="lede">Each with its own private entrance, its own laundry, and its own bathrooms — over 1,500 sq ft per level.</p>
+    
+    <article class="level">
+      <h3>Main level — 3 bed, 1.5 bath</h3>
+      <p>Open-concept kitchen and dining, living room, sunroom, primary suite with walk-in closet and ensuite, private front balcony, rear patio onto fenced yard.</p>
+    </article>
+    
+    <article class="level">
+      <h3>Second level — 2 bed, 1 bath</h3>
+      <p>Self-contained unit with its own entrance. Open-concept living and dining, sunroom, private back veranda, views of the New Glasgow River.</p>
+    </article>
+    
+    <article class="level">
+      <h3>Basement — 2 bed, 1 bath</h3>
+      <p>Rec room, full bathroom with laundry, direct access to the heated double garage. Already plumbed for a kitchenette.</p>
+    </article>
+    
+    <p class="disclosure" data-track-text="investor" hidden>
+      Stated plainly: owner-occupied by family on both floors, and the property has
+      <strong>never been rented</strong>. There is no rental history to quote and no income
+      figure attached to this listing. What is on offer is the structure.
+    </p>
+  </section>
+
+  
+  <section class="gallery">
+    <h2>49 photos</h2>
+    <div class="grid">
+      
+      <img src="photos/gallery/01.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 1 of 49">
+      
+      <img src="photos/gallery/02.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 2 of 49">
+      
+      <img src="photos/gallery/03.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 3 of 49">
+      
+      <img src="photos/gallery/04.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 4 of 49">
+      
+      <img src="photos/gallery/05.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 5 of 49">
+      
+      <img src="photos/gallery/06.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 6 of 49">
+      
+      <img src="photos/gallery/07.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 7 of 49">
+      
+      <img src="photos/gallery/08.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 8 of 49">
+      
+      <img src="photos/gallery/09.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 9 of 49">
+      
+      <img src="photos/gallery/10.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 10 of 49">
+      
+      <img src="photos/gallery/11.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 11 of 49">
+      
+      <img src="photos/gallery/12.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 12 of 49">
+      
+      <img src="photos/gallery/13.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 13 of 49">
+      
+      <img src="photos/gallery/14.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 14 of 49">
+      
+      <img src="photos/gallery/15.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 15 of 49">
+      
+      <img src="photos/gallery/16.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 16 of 49">
+      
+      <img src="photos/gallery/17.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 17 of 49">
+      
+      <img src="photos/gallery/18.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 18 of 49">
+      
+      <img src="photos/gallery/19.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 19 of 49">
+      
+      <img src="photos/gallery/20.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 20 of 49">
+      
+      <img src="photos/gallery/21.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 21 of 49">
+      
+      <img src="photos/gallery/22.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 22 of 49">
+      
+      <img src="photos/gallery/23.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 23 of 49">
+      
+      <img src="photos/gallery/24.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 24 of 49">
+      
+      <img src="photos/gallery/25.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 25 of 49">
+      
+      <img src="photos/gallery/26.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 26 of 49">
+      
+      <img src="photos/gallery/27.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 27 of 49">
+      
+      <img src="photos/gallery/28.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 28 of 49">
+      
+      <img src="photos/gallery/29.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 29 of 49">
+      
+      <img src="photos/gallery/30.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 30 of 49">
+      
+      <img src="photos/gallery/31.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 31 of 49">
+      
+      <img src="photos/gallery/32.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 32 of 49">
+      
+      <img src="photos/gallery/33.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 33 of 49">
+      
+      <img src="photos/gallery/34.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 34 of 49">
+      
+      <img src="photos/gallery/35.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 35 of 49">
+      
+      <img src="photos/gallery/36.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 36 of 49">
+      
+      <img src="photos/gallery/37.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 37 of 49">
+      
+      <img src="photos/gallery/38.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 38 of 49">
+      
+      <img src="photos/gallery/39.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 39 of 49">
+      
+      <img src="photos/gallery/40.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 40 of 49">
+      
+      <img src="photos/gallery/41.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 41 of 49">
+      
+      <img src="photos/gallery/42.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 42 of 49">
+      
+      <img src="photos/gallery/43.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 43 of 49">
+      
+      <img src="photos/gallery/44.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 44 of 49">
+      
+      <img src="photos/gallery/45.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 45 of 49">
+      
+      <img src="photos/gallery/46.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 46 of 49">
+      
+      <img src="photos/gallery/47.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 47 of 49">
+      
+      <img src="photos/gallery/48.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 48 of 49">
+      
+      <img src="photos/gallery/49.jpg" loading="lazy"
+           alt="6012 Rte 13, photo 49 of 49">
+      
+    </div>
+  </section>
+  
+
+  <section class="facts">
+    <h2>The details</h2>
+    <dl>
+      <dt>Price</dt><dd>$674,900</dd>
+      <dt>MLS</dt><dd>202610284</dd>
+      <dt>Finished area</dt><dd>5,568 sq ft</dd>
+      <dt>Lot</dt><dd>0.58 acres, cleared</dd>
+      <dt>Built</dt><dd>1986</dd>
+      <dt>Title</dt><dd>Freehold</dd>
+      <dt>Heat</dt><dd>Baseboard heaters, Wall-mounted heat pump (electric)</dd>
+      <dt>Water and sewer</dt><dd>Well, septic system</dd>
+      <dt>Parking</dt><dd>Attached heated double garage</dd>
+      <dt>Property taxes</dt><dd>$3,758 per year</dd>
+      <dt>Access</dt><dd>Year-round access</dd>
+    </dl>
+  </section>
+
+  <section class="contact">
+    <h2>Request a showing</h2>
+    <p>Enquiries go to the listing agent, Morgan Murphy at RED-ISLE REALTY INC..</p>
+    <form id="lead-form"
+          data-sent="Thanks — your message is on its way to Morgan Murphy at RED-ISLE REALTY INC.."
+          data-failed="That did not send. Please call Morgan Murphy directly at 902-388-0170.">
+      <label>Name <input name="name" required autocomplete="name"></label>
+      <label>Email <input name="email" type="email" required autocomplete="email"></label>
+      <label>Phone <input name="phone" type="tel" autocomplete="tel"></label>
+      <label>Anything you want to ask <textarea name="message" rows="4"></textarea></label>
+      <button type="submit">Send</button>
+      <p id="lead-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="direct">Or call Morgan Murphy directly: <a href="tel:902-388-0170">902-388-0170</a></p>
+  </section>
+
+  <footer>
+    <p class="always-disclosed">
+      This property is owner-occupied and has never been rented. There is no rental
+      history and no income figure attached to this listing.
+    </p>
+    <p>MLS 202610284. Listed by Morgan Murphy, RED-ISLE REALTY INC., 902-388-0170, 284 Grafton Street, Charlottetown, Prince Edward Island C1A 1L7.</p>
+    <p>Listing data provided by Prince Edward Island Real Estate Association. <a href="https://www.realtor.ca/real-estate/29725053/6012-rte-13-new-glasgow">View on REALTOR.ca</a>.</p>
+    <p class="fine">This page is published by the property owners to support the listing. It is not a for-sale-by-owner listing.</p>
+  </footer>
+</main>
+
+<script>// Hosted backend. Posts leads to an HTTP endpoint; analytics is handled by the
+// hosting provider's script, so recordView only needs to tag the session.
+(function () {
+  const ENDPOINT = window.BLAST_LEAD_ENDPOINT || "";
+
+  async function submitLead(lead) {
+    if (!ENDPOINT) {
+      try {
+        const pending = JSON.parse(localStorage.getItem("blast:leads") || "[]");
+        pending.push({ ...lead, at: new Date().toISOString() });
+        localStorage.setItem("blast:leads", JSON.stringify(pending));
+      } catch (error) {
+        console.warn("lead not stored", error);
+        return { ok: false };
+      }
+      return { ok: true };
+    }
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(lead),
+      });
+      return { ok: response.ok };
+    } catch (error) {
+      console.warn("lead submission failed", error);
+      return { ok: false };
+    }
+  }
+
+  async function recordView(meta) {
+    try {
+      sessionStorage.setItem("blast:src", meta.src || "direct");
+    } catch (error) {
+      // Private browsing. Attribution is nice to have, not load-bearing.
+    }
+  }
+
+  window.BLAST_BACKEND = { submitLead, recordView };
+})();
+</script>
+<script>(function () {
+  const params = new URLSearchParams(location.search);
+  const source = params.get("src") || "direct";
+  let track = params.get("track") === "investor" ? "investor" : "family";
+
+  function applyTrack(next) {
+    track = next;
+    document.querySelectorAll("[data-track-text]").forEach((element) => {
+      element.hidden = element.dataset.trackText !== track;
+    });
+    document.querySelectorAll(".track-toggle button").forEach((button) => {
+      const selected = button.dataset.track === track;
+      button.classList.toggle("is-active", selected);
+      // A class change is invisible to a screen reader. On a page whose premise
+      // is "pick your perspective", the current choice has to be announced.
+      button.setAttribute("aria-pressed", String(selected));
+    });
+  }
+
+  document.querySelectorAll(".track-toggle button").forEach((button) => {
+    button.addEventListener("click", () => applyTrack(button.dataset.track));
+  });
+  applyTrack(track);
+
+  // Attribution is best effort. A backend that rejects must not produce an
+  // unhandled rejection in a visitor's console.
+  Promise.resolve(window.BLAST_BACKEND.recordView({ src: source, track })).catch(() => {});
+
+  const form = document.getElementById("lead-form");
+  const status = document.getElementById("lead-status");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submit = form.querySelector("button[type=submit]");
+    submit.disabled = true;
+    status.textContent = "Sending…";
+    const fields = Object.fromEntries(new FormData(form).entries());
+    const result = await window.BLAST_BACKEND.submitLead({ ...fields, track, src: source });
+    // Both messages come from the markup, which already has the agent context.
+    // Duplicating them here means a contact change has to be made twice.
+    if (result.ok) {
+      form.hidden = true;
+      status.textContent = form.dataset.sent;
+    } else {
+      submit.disabled = false;
+      status.textContent = form.dataset.failed;
+    }
+  });
+})();
+</script>
+</body></html>
