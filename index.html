@@ -1,312 +1,1220 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><title>6012 Rte 13 — New Glasgow, PEI</title>
-<style>:root {
-  --bg: #fbfaf8; --surface: #ffffff; --ink: #1c1a17; --muted: #6b6560;
-  --line: #e4dfd8; --accent: #1f5c4a; --accent-ink: #ffffff;
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><title>6012 Rte 13, New Glasgow — $674,900</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+<style>/* ==========================================================================
+   6012 Rte 13, New Glasgow PEI - landing page
+
+   The palette is taken from the property: the sage of the siding and the
+   kitchen cabinetry, the warm island light, the red clay of the driveway,
+   the white trim. Display face is a serif because a house is a story, not
+   a spreadsheet; body text stays on the system stack so it loads instantly
+   for someone opening this on a phone from a Facebook link.
+   ========================================================================== */
+
+:root {
+  --paper: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f2eee6;
+  --ink: #191c19;
+  --ink-2: #3d433c;
+  --muted: #71766e;
+  --line: #e6e1d6;
+  --line-strong: #d3ccbd;
+  --forest: #2c5545;
+  --forest-2: #3d7360;
+  --forest-ink: #ffffff;
+  --forest-soft: #edf3ef;
+  --clay: #a95a44;
+  --scrim: rgba(12, 18, 14, 0.62);
+  --shadow-sm: 0 1px 2px rgba(25, 28, 25, 0.05), 0 4px 12px rgba(25, 28, 25, 0.05);
+  --shadow-lg: 0 2px 6px rgba(25, 28, 25, 0.07), 0 20px 50px rgba(25, 28, 25, 0.10);
+
+  --display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --wrap: 74rem;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section: clamp(4rem, 9vw, 7.5rem);
+  --radius: 14px;
 }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #17181a; --surface: #1f2124; --ink: #ecebe8; --muted: #a6a29c;
-    --line: #32353a; --accent: #6fc0a4; --accent-ink: #10221c;
+    --paper: #141714;
+    --surface: #1c201c;
+    --surface-2: #242822;
+    --ink: #ecebe4;
+    --ink-2: #c6cabf;
+    --muted: #9aa094;
+    --line: #2f342e;
+    --line-strong: #40463d;
+    --forest: #8ed0b0;
+    --forest-2: #a7dcc2;
+    --forest-ink: #0d1f17;
+    --forest-soft: #1c2a23;
+    --clay: #e09077;
+    --scrim: rgba(8, 12, 9, 0.66);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.35), 0 20px 50px rgba(0, 0, 0, 0.45);
   }
 }
+
 :root[data-theme="dark"] {
-  --bg: #17181a; --surface: #1f2124; --ink: #ecebe8; --muted: #a6a29c;
-  --line: #32353a; --accent: #6fc0a4; --accent-ink: #10221c;
+  --paper: #141714;
+  --surface: #1c201c;
+  --surface-2: #242822;
+  --ink: #ecebe4;
+  --ink-2: #c6cabf;
+  --muted: #9aa094;
+  --line: #2f342e;
+  --line-strong: #40463d;
+  --forest: #8ed0b0;
+  --forest-2: #a7dcc2;
+  --forest-ink: #0d1f17;
+  --forest-soft: #1c2a23;
+  --clay: #e09077;
+  --scrim: rgba(8, 12, 9, 0.66);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.35), 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
-body { background: var(--bg); color: var(--ink); font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
-main { max-width: 68rem; margin: 0 auto; padding-inline: 20px; padding-block: 0 4rem; }
-h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.15; margin: 0.4em 0 0.2em; letter-spacing: -0.02em; }
-h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); margin-top: 3rem; }
-section { border-top: 1px solid var(--line); }
+/* --------------------------------------------------------------------------
+   Base. The artifact host supplies a small reset; the self-hosted target
+   does not, so everything it relies on is restated here.
+   -------------------------------------------------------------------------- */
 
-.hero-image { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
-.price { font-size: 2rem; font-weight: 600; color: var(--accent); margin: 0.2em 0; }
-.address { color: var(--muted); margin: 0; }
-.lede { color: var(--muted); max-width: 46rem; }
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
-.track-toggle { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
-.track-toggle button { border: 1px solid var(--line); background: var(--surface); color: var(--muted); padding: 8px 14px; border-radius: 999px; font: inherit; font-size: 0.9rem; cursor: pointer; }
-.track-toggle button.is-active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-.quick-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; color: var(--muted); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
 
-.level { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
-.level h3 { margin: 0 0 0.4em; font-size: 1.05rem; }
-.level p { margin: 0; color: var(--muted); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
 
-.disclosure { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; }
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 10px; }
-.grid img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 8px; }
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0;
+}
 
-dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 24px; }
-dt { color: var(--muted); }
-dd { margin: 0; }
+h1 { font-size: clamp(2.25rem, 6.2vw, 4.35rem); letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
 
-form { display: grid; gap: 12px; max-width: 34rem; }
-label { display: grid; gap: 4px; color: var(--muted); font-size: 0.9rem; }
-input, textarea { font: inherit; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); width: 100%; box-sizing: border-box; }
-button[type="submit"] { background: var(--accent); color: var(--accent-ink); border: 0; padding: 12px 20px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; justify-self: start; }
+.kicker {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin: 0 0 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+.kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
 
-footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; color: var(--muted); font-size: 0.85rem; }
-.always-disclosed { color: var(--ink); }
-.fine { font-size: 0.8rem; }
+.lede {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 48ch;
+  margin: 1.25rem 0 0;
+}
+
+.section { padding-block: var(--section); }
+.section + .section { border-top: 1px solid var(--line); }
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(92svh, 920px);
+  display: flex;
+  align-items: flex-end;
+  padding-block: clamp(5rem, 14vh, 9rem) clamp(2.5rem, 6vh, 4rem);
+  background: linear-gradient(160deg, var(--forest) 0%, #16332a 100%);
+  color: #fff;
+}
+
+.hero-media { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(10, 16, 12, 0.88) 0%, rgba(10, 16, 12, 0.55) 34%, rgba(10, 16, 12, 0.12) 62%, rgba(10, 16, 12, 0.35) 100%);
+}
+
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.5rem;
+}
+
+.hero h1 { color: #fff; margin: 0; max-width: 16ch; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3); }
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.hero-price {
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero-address { margin: 0; color: rgba(255, 255, 255, 0.86); font-size: 1rem; }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--forest); color: var(--forest-ink); }
+.btn-primary:hover { background: var(--forest-2); }
+.hero .btn-primary { background: #fff; color: #17342a; }
+.hero .btn-primary:hover { background: #eaf3ee; }
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.18); }
+
+/* Segmented control. This toggle is the premise of the page, so it has to
+   read as a real control rather than two links that happen to sit together. */
+.track-toggle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 1.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+}
+.track-toggle button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.track-toggle button:hover { background: rgba(255, 255, 255, 0.14); }
+.track-toggle button.is-active { background: #fff; color: #17342a; }
+
+/* Narrow enough that the toggle wraps. A pill container wrapped onto two rows
+   reads as a layout bug, so below this it becomes a stacked block instead, and
+   the hero buttons square up with it rather than sitting at ragged widths. */
+@media (max-width: 560px) {
+  .track-toggle { display: grid; grid-template-columns: 1fr; width: 100%; border-radius: 16px; }
+  .track-toggle button { border-radius: 12px; }
+  .hero-cta { display: grid; }
+  .hero-cta .btn { width: 100%; }
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  translate: -50% 0;
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+}
+@media (max-width: 720px) { .scroll-cue { display: none; } }
+
+/* --------------------------------------------------------------------------
+   Stat band
+   -------------------------------------------------------------------------- */
+
+.stats { background: var(--surface); border-bottom: 1px solid var(--line); }
+.stats ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); }
+.stats li { padding: clamp(1.4rem, 3vw, 2.2rem) 0.75rem; text-align: center; border-left: 1px solid var(--line); }
+.stats li:first-child { border-left: 0; }
+.stats .n {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.stats .n small { font-size: 0.5em; font-weight: 500; color: var(--muted); margin-left: 0.15em; }
+.stats .l {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .stats ul { grid-template-columns: repeat(3, 1fr); }
+  .stats li:nth-child(3n + 1) { border-left: 0; }
+  .stats li:nth-child(n + 4) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 460px) {
+  .stats ul { grid-template-columns: repeat(2, 1fr); }
+  .stats li { border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
+  .stats li:nth-child(odd) { border-left: 0; }
+  .stats li:nth-child(-n + 2) { border-top: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Levels
+   -------------------------------------------------------------------------- */
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.level {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.level:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.level-media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--surface-2); }
+.level-media img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.5s ease; }
+.level:hover .level-media img { scale: 1.04; }
+
+.level-body { padding: 1.4rem 1.5rem 1.6rem; }
+.level-index { font-family: var(--display); font-size: 0.85rem; color: var(--clay); letter-spacing: 0.04em; }
+.level h3 { margin: 0.35rem 0 0.5rem; }
+.level-spec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em 0.9em;
+  margin: 0 0 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.level p.level-notes { margin: 0; color: var(--ink-2); font-size: 0.95rem; line-height: 1.6; }
+
+.disclosure {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  background: var(--forest-soft);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--forest);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  color: var(--ink-2);
+  font-size: 0.97rem;
+  max-width: 62ch;
+}
+.disclosure strong { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   Full-bleed feature band
+   -------------------------------------------------------------------------- */
+
+.band {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: min(62svh, 560px);
+  color: #fff;
+  text-align: center;
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+.band-media { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.band-media img { width: 100%; height: 100%; object-fit: cover; }
+.band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--scrim); }
+.band blockquote {
+  margin-inline: auto;
+  margin-block: 0;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.band .band-note { margin: 1.5rem auto 0; color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; max-width: 46ch; }
+
+/* --------------------------------------------------------------------------
+   Gallery
+   -------------------------------------------------------------------------- */
+
+.gallery-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+
+.mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: clamp(2rem, 4vw, 3rem); }
+.mosaic .shot:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+.shot {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: var(--surface-2);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: zoom-in;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  display: block;
+  width: 100%;
+}
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: scale 0.45s ease; }
+.shot:hover img { scale: 1.05; }
+.shot:focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; }
+
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 45%), 1fr)); gap: 12px; margin-top: 12px; }
+
+.gallery-more { margin-top: 1.75rem; display: flex; justify-content: center; }
+.btn-outline { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+.btn-outline:hover { border-color: var(--forest); color: var(--forest); }
 
 @media (max-width: 640px) {
-  dl { grid-template-columns: 1fr; gap: 2px 0; }
-  dt { margin-top: 10px; }
+  .mosaic { grid-template-columns: repeat(2, 1fr); }
+  .mosaic .shot:first-child { grid-column: span 2; grid-row: auto; aspect-ratio: 3 / 2; }
+}
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 60; background: rgba(8, 11, 9, 0.94); display: grid; place-items: center; padding: clamp(12px, 4vw, 48px); }
+.lightbox img { max-width: 100%; max-height: 82svh; object-fit: contain; border-radius: 6px; }
+.lb-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, 0.24); }
+.lb-close { top: 16px; right: 16px; }
+.lb-prev { left: 16px; top: 50%; translate: 0 -50%; }
+.lb-next { right: 16px; top: 50%; translate: 0 -50%; }
+.lb-count { position: absolute; bottom: 18px; left: 50%; translate: -50% 0; color: rgba(255, 255, 255, 0.8); font-size: 0.85rem; margin: 0; }
+
+/* --------------------------------------------------------------------------
+   Specification sheet
+   -------------------------------------------------------------------------- */
+
+.spec-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: clamp(2rem, 4vw, 3.5rem); margin-top: clamp(2rem, 4vw, 3rem); }
+.spec-group h3 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+.spec-group dl { display: grid; grid-template-columns: minmax(7.5rem, auto) 1fr; gap: 0; margin: 0; }
+.spec-group dt, .spec-group dd { padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.93rem; }
+.spec-group dt { color: var(--muted); padding-right: 1.25rem; }
+.spec-group dd { margin: 0; color: var(--ink); }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 1rem 0 0; }
+.chips li { font-size: 0.82rem; padding: 5px 13px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+
+.contact { background: var(--surface-2); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact-copy p { color: var(--ink-2); }
+.agent-card { margin-top: 1.75rem; padding: 1.25rem 1.4rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.agent-card .agent-name { font-family: var(--display); font-size: 1.15rem; font-weight: 600; margin: 0; }
+.agent-card .agent-firm { margin: 0.15rem 0 0.9rem; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.agent-card a.phone { display: inline-flex; align-items: center; gap: 0.5em; font-size: 1.15rem; font-weight: 650; color: var(--forest); text-decoration: none; }
+.agent-card a.phone:hover { text-decoration: underline; }
+
+.official {
+  display: block;
+  margin-top: 12px;
+  padding: 1rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--clay);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.official:hover { border-color: var(--clay); transform: translateX(2px); }
+.official-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.official-cta { display: block; margin-top: 0.3rem; font-size: 1rem; font-weight: 650; color: var(--clay); }
+
+form {
+  display: grid;
+  gap: 14px;
+  background: var(--surface);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+label { display: grid; gap: 6px; font-size: 0.78rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+input, textarea {
+  font: inherit;
+  font-size: 1rem;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 400;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink);
+  width: 100%;
+}
+input:focus, textarea:focus { outline: 2px solid var(--forest); outline-offset: 1px; border-color: transparent; }
+textarea { resize: vertical; }
+button[type="submit"] { justify-self: start; margin-top: 0.25rem; }
+button[type="submit"]:disabled { opacity: 0.55; cursor: progress; }
+#lead-status:empty { display: none; }
+#lead-status { margin: 0; font-size: 0.92rem; color: var(--forest); }
+
+/* --------------------------------------------------------------------------
+   Footer + sticky call bar
+   -------------------------------------------------------------------------- */
+
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(5.5rem, 8vw, 4rem);
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+footer p { max-width: 70ch; }
+footer a { color: var(--forest); }
+.always-disclosed { color: var(--ink); font-weight: 500; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.fine { font-size: 0.8rem; }
+
+.sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px max(12px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  translate: 0 110%;
+  transition: translate 0.3s ease;
+}
+.sticky-cta.is-shown { translate: 0 0; }
+.sticky-cta .sticky-price { font-family: var(--display); font-weight: 600; font-size: 1.05rem; margin: 0; padding-left: 8px; }
+.sticky-cta .btn { padding: 11px 20px; font-size: 0.88rem; }
+@media (min-width: 860px) { .sticky-cta { display: none; } }
+
+/* --------------------------------------------------------------------------
+   Reveal on scroll
+   -------------------------------------------------------------------------- */
+
+/* Gated on an attribute the script sets, so the starting state only ever
+   exists where something is able to undo it. Written as a bare `.reveal`
+   this hid three of the page's selling points behind a script that had to
+   run: one thrown error above it, or no JS at all, and the level cards were
+   invisible for good. */
+[data-reveal] .reveal { opacity: 0; translate: 0 18px; transition: opacity 0.7s ease, translate 0.7s ease; }
+[data-reveal] .reveal.is-in { opacity: 1; translate: 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] .reveal { opacity: 1; translate: none; transition: none; }
+  .btn:hover, .level:hover { transform: none; }
+  .shot img, .level-media img { transition: none; }
+  .sticky-cta { transition: none; }
 }
 </style>
 
 <main>
   <header class="hero">
-    <img class="hero-image" src="photos/hero/01.jpg" alt="6012 Rte 13, New Glasgow PEI">
-    <div class="hero-text">
+    <div class="hero-media">
+      <img src="photos/hero/04.jpg" fetchpriority="high"
+        alt="Aerial view of 6012 Rte 13: the house on its cleared lot, farm fields beyond, and the water in the distance.">
+    </div>
+    <div class="wrap">
+      <p class="eyebrow">New Glasgow &middot; Prince Edward Island</p>
       <div class="track-toggle" role="group" aria-label="Choose a perspective">
         <button type="button" data-track="family" class="is-active" aria-pressed="true">A home for the whole family</button>
         <button type="button" data-track="investor" aria-pressed="false">A three-unit property</button>
       </div>
       <h1 data-track-text="family">Three Homes Under One Roof</h1>
       <h1 data-track-text="investor" hidden>Configured for Three Units, 15 Minutes from Cavendish</h1>
-      <p class="address">6012 Rte 13, New Glasgow, Prince Edward Island</p>
-      <p class="price">$674,900</p>
-      <ul class="quick-facts">
-        <li>7 bed</li>
-        <li>4 bath</li>
-        <li>5,568 sq ft</li>
-        <li>0.58 acres</li>
-        <li>River view</li>
-      </ul>
+      <div class="hero-meta">
+        <p class="hero-price">$674,900</p>
+        <p class="hero-address">6012 Rte 13, New Glasgow, Prince Edward Island</p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Request a showing</a>
+        <a class="btn btn-ghost" href="#gallery">See all 49 photos</a>
+        <a class="btn btn-ghost" href="https://www.realtor.ca/real-estate/29725053/6012-rte-13-new-glasgow" target="_blank" rel="noopener">
+          View on REALTOR.ca <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
     </div>
+    <div class="scroll-cue" aria-hidden="true"></div>
   </header>
 
-  <section class="levels">
-    <h2>Three fully developed levels</h2>
-    <p class="lede">Each with its own private entrance, its own laundry, and its own bathrooms — over 1,500 sq ft per level.</p>
-    
-    <article class="level">
-      <h3>Main level — 3 bed, 1.5 bath</h3>
-      <p>Open-concept kitchen and dining, living room, sunroom, primary suite with walk-in closet and ensuite, private front balcony, rear patio onto fenced yard.</p>
-    </article>
-    
-    <article class="level">
-      <h3>Second level — 2 bed, 1 bath</h3>
-      <p>Self-contained unit with its own entrance. Open-concept living and dining, sunroom, private back veranda, views of the New Glasgow River.</p>
-    </article>
-    
-    <article class="level">
-      <h3>Basement — 2 bed, 1 bath</h3>
-      <p>Rec room, full bathroom with laundry, direct access to the heated double garage. Already plumbed for a kitchenette.</p>
-    </article>
-    
-    <p class="disclosure" data-track-text="investor" hidden>
-      Stated plainly: owner-occupied by family on both floors, and the property has
-      <strong>never been rented</strong>. There is no rental history to quote and no income
-      figure attached to this listing. What is on offer is the structure.
-    </p>
+  <section class="stats">
+    <div class="wrap">
+      <ul>
+        <li><span class="n">7</span><span class="l">Bedrooms</span></li>
+        <li><span class="n">4</span><span class="l">Bathrooms</span></li>
+        <li><span class="n">5,568</span><span class="l">Finished sq ft</span></li>
+        <li><span class="n">3</span><span class="l">Private entrances</span></li>
+        <li><span class="n">0.58</span><span class="l">Acre lot</span></li>
+        <li><span class="n">15<small>min</small></span><span class="l">To Cavendish</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="levels">
+    <div class="wrap">
+      <p class="kicker">The layout</p>
+      <h2>Three fully developed levels</h2>
+      <p class="lede" data-track-text="family">
+        Room for three generations without anyone living on top of anyone else. Every level
+        is finished, with its own entrance, its own laundry and its own bathrooms.
+      </p>
+      <p class="lede" data-track-text="investor" hidden>
+        5,568 finished square feet already divided into separate,
+        self-contained levels — 15 minutes from Cavendish and
+        25 from Charlottetown.
+      </p>
+
+      <div class="levels-grid">
+        
+        <article class="level reveal">
+          
+          <div class="level-media">
+            <img src="photos/gallery/14.jpg" loading="lazy"
+                 alt="Main level at 6012 Rte 13">
+          </div>
+          
+          <div class="level-body">
+            <p class="level-index">01</p>
+            <h3>Main level</h3>
+            <p class="level-spec"><span>3 bed</span><span>1.5 bath</span></p>
+            <p class="level-notes">Open-concept kitchen and dining, living room, sunroom, primary suite with walk-in closet and ensuite, private front balcony, rear patio onto fenced yard.</p>
+          </div>
+        </article>
+        
+        <article class="level reveal">
+          
+          <div class="level-media">
+            <img src="photos/gallery/35.jpg" loading="lazy"
+                 alt="Second level at 6012 Rte 13">
+          </div>
+          
+          <div class="level-body">
+            <p class="level-index">02</p>
+            <h3>Second level</h3>
+            <p class="level-spec"><span>2 bed</span><span>1 bath</span></p>
+            <p class="level-notes">Self-contained unit with its own entrance. Open-concept living and dining, sunroom, private back veranda, views of the New Glasgow River.</p>
+          </div>
+        </article>
+        
+        <article class="level reveal">
+          
+          <div class="level-media">
+            <img src="photos/gallery/28.jpg" loading="lazy"
+                 alt="Basement at 6012 Rte 13">
+          </div>
+          
+          <div class="level-body">
+            <p class="level-index">03</p>
+            <h3>Basement</h3>
+            <p class="level-spec"><span>2 bed</span><span>1 bath</span></p>
+            <p class="level-notes">Rec room, full bathroom with laundry, direct access to the heated double garage. Already plumbed for a kitchenette.</p>
+          </div>
+        </article>
+        
+      </div>
+
+      <p class="disclosure">
+        <strong>Stated plainly:</strong> owner-occupied by family on both floors, and the property has
+        <strong>never been rented</strong>. There is no rental history to quote and no income
+        figure attached to this listing. What is on offer is the structure.
+      </p>
+    </div>
   </section>
 
   
-  <section class="gallery">
-    <h2>49 photos</h2>
-    <div class="grid">
-      
-      <img src="photos/gallery/01.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 1 of 49">
-      
-      <img src="photos/gallery/02.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 2 of 49">
-      
-      <img src="photos/gallery/03.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 3 of 49">
-      
-      <img src="photos/gallery/04.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 4 of 49">
-      
-      <img src="photos/gallery/05.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 5 of 49">
-      
-      <img src="photos/gallery/06.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 6 of 49">
-      
-      <img src="photos/gallery/07.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 7 of 49">
-      
-      <img src="photos/gallery/08.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 8 of 49">
-      
-      <img src="photos/gallery/09.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 9 of 49">
-      
-      <img src="photos/gallery/10.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 10 of 49">
-      
-      <img src="photos/gallery/11.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 11 of 49">
-      
-      <img src="photos/gallery/12.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 12 of 49">
-      
-      <img src="photos/gallery/13.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 13 of 49">
-      
-      <img src="photos/gallery/14.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 14 of 49">
-      
-      <img src="photos/gallery/15.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 15 of 49">
-      
-      <img src="photos/gallery/16.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 16 of 49">
-      
-      <img src="photos/gallery/17.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 17 of 49">
-      
-      <img src="photos/gallery/18.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 18 of 49">
-      
-      <img src="photos/gallery/19.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 19 of 49">
-      
-      <img src="photos/gallery/20.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 20 of 49">
-      
-      <img src="photos/gallery/21.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 21 of 49">
-      
-      <img src="photos/gallery/22.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 22 of 49">
-      
-      <img src="photos/gallery/23.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 23 of 49">
-      
-      <img src="photos/gallery/24.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 24 of 49">
-      
-      <img src="photos/gallery/25.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 25 of 49">
-      
+  <section class="band">
+    <div class="band-media">
       <img src="photos/gallery/26.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 26 of 49">
+           alt="Stacked covered decks at the back of the house, looking out over the fields.">
+    </div>
+    <div class="wrap">
+      <blockquote>Three private entrances. Three places to sit outside. One roof.</blockquote>
+      <p class="band-note">Each of the three levels has its own private entrance, per the MLS listing description.</p>
+    </div>
+  </section>
+  
+
+  
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="gallery-head">
+        <div>
+          <p class="kicker">Inside and out</p>
+          <h2>49 photos</h2>
+        </div>
+      </div>
+
       
-      <img src="photos/gallery/27.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 27 of 49">
+      <div class="mosaic">
+        
+        <button type="button" class="shot" data-index="2">
+          <img src="photos/gallery/03.jpg" loading="lazy" alt="The back of the house from the air, decks stacked on every level.">
+        </button>
+        
+        <button type="button" class="shot" data-index="24">
+          <img src="photos/gallery/25.jpg" loading="lazy" alt="Covered deck with a wood plank ceiling and room to sit.">
+        </button>
+        
+        <button type="button" class="shot" data-index="39">
+          <img src="photos/gallery/40.jpg" loading="lazy" alt="Upper deck with outdoor seating, looking out over the fields.">
+        </button>
+        
+        <button type="button" class="shot" data-index="18">
+          <img src="photos/gallery/19.jpg" loading="lazy" alt="Primary bedroom, with the ensuite through the door beyond.">
+        </button>
+        
+        <button type="button" class="shot" data-index="41">
+          <img src="photos/gallery/42.jpg" loading="lazy" alt="Second-level living room with built-in shelving and a wide window.">
+        </button>
+        
+        <button type="button" class="shot" data-index="37">
+          <img src="photos/gallery/38.jpg" loading="lazy" alt="Bright second-level sitting room lined with windows.">
+        </button>
+        
+      </div>
       
-      <img src="photos/gallery/28.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 28 of 49">
+
+      <div class="photo-grid" id="photo-grid">
+        
+        <button type="button" class="shot" data-index="0"
+                >
+          <img src="photos/gallery/01.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 1 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="1"
+                >
+          <img src="photos/gallery/02.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 2 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="2"
+                >
+          <img src="photos/gallery/03.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 3 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="3"
+                >
+          <img src="photos/gallery/04.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 4 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="4"
+                >
+          <img src="photos/gallery/05.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 5 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="5"
+                >
+          <img src="photos/gallery/06.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 6 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="6"
+                >
+          <img src="photos/gallery/07.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 7 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="7"
+                >
+          <img src="photos/gallery/08.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 8 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="8"
+                >
+          <img src="photos/gallery/09.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 9 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="9"
+                >
+          <img src="photos/gallery/10.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 10 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="10"
+                >
+          <img src="photos/gallery/11.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 11 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="11"
+                >
+          <img src="photos/gallery/12.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 12 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="12"
+                data-extra hidden>
+          <img src="photos/gallery/13.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 13 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="13"
+                data-extra hidden>
+          <img src="photos/gallery/14.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 14 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="14"
+                data-extra hidden>
+          <img src="photos/gallery/15.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 15 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="15"
+                data-extra hidden>
+          <img src="photos/gallery/16.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 16 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="16"
+                data-extra hidden>
+          <img src="photos/gallery/17.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 17 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="17"
+                data-extra hidden>
+          <img src="photos/gallery/18.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 18 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="18"
+                data-extra hidden>
+          <img src="photos/gallery/19.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 19 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="19"
+                data-extra hidden>
+          <img src="photos/gallery/20.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 20 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="20"
+                data-extra hidden>
+          <img src="photos/gallery/21.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 21 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="21"
+                data-extra hidden>
+          <img src="photos/gallery/22.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 22 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="22"
+                data-extra hidden>
+          <img src="photos/gallery/23.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 23 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="23"
+                data-extra hidden>
+          <img src="photos/gallery/24.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 24 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="24"
+                data-extra hidden>
+          <img src="photos/gallery/25.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 25 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="25"
+                data-extra hidden>
+          <img src="photos/gallery/26.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 26 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="26"
+                data-extra hidden>
+          <img src="photos/gallery/27.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 27 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="27"
+                data-extra hidden>
+          <img src="photos/gallery/28.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 28 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="28"
+                data-extra hidden>
+          <img src="photos/gallery/29.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 29 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="29"
+                data-extra hidden>
+          <img src="photos/gallery/30.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 30 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="30"
+                data-extra hidden>
+          <img src="photos/gallery/31.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 31 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="31"
+                data-extra hidden>
+          <img src="photos/gallery/32.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 32 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="32"
+                data-extra hidden>
+          <img src="photos/gallery/33.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 33 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="33"
+                data-extra hidden>
+          <img src="photos/gallery/34.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 34 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="34"
+                data-extra hidden>
+          <img src="photos/gallery/35.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 35 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="35"
+                data-extra hidden>
+          <img src="photos/gallery/36.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 36 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="36"
+                data-extra hidden>
+          <img src="photos/gallery/37.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 37 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="37"
+                data-extra hidden>
+          <img src="photos/gallery/38.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 38 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="38"
+                data-extra hidden>
+          <img src="photos/gallery/39.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 39 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="39"
+                data-extra hidden>
+          <img src="photos/gallery/40.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 40 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="40"
+                data-extra hidden>
+          <img src="photos/gallery/41.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 41 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="41"
+                data-extra hidden>
+          <img src="photos/gallery/42.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 42 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="42"
+                data-extra hidden>
+          <img src="photos/gallery/43.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 43 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="43"
+                data-extra hidden>
+          <img src="photos/gallery/44.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 44 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="44"
+                data-extra hidden>
+          <img src="photos/gallery/45.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 45 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="45"
+                data-extra hidden>
+          <img src="photos/gallery/46.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 46 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="46"
+                data-extra hidden>
+          <img src="photos/gallery/47.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 47 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="47"
+                data-extra hidden>
+          <img src="photos/gallery/48.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 48 of 49">
+        </button>
+        
+        <button type="button" class="shot" data-index="48"
+                data-extra hidden>
+          <img src="photos/gallery/49.jpg" loading="lazy"
+               alt="6012 Rte 13, photo 49 of 49">
+        </button>
+        
+      </div>
+
       
-      <img src="photos/gallery/29.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 29 of 49">
-      
-      <img src="photos/gallery/30.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 30 of 49">
-      
-      <img src="photos/gallery/31.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 31 of 49">
-      
-      <img src="photos/gallery/32.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 32 of 49">
-      
-      <img src="photos/gallery/33.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 33 of 49">
-      
-      <img src="photos/gallery/34.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 34 of 49">
-      
-      <img src="photos/gallery/35.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 35 of 49">
-      
-      <img src="photos/gallery/36.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 36 of 49">
-      
-      <img src="photos/gallery/37.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 37 of 49">
-      
-      <img src="photos/gallery/38.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 38 of 49">
-      
-      <img src="photos/gallery/39.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 39 of 49">
-      
-      <img src="photos/gallery/40.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 40 of 49">
-      
-      <img src="photos/gallery/41.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 41 of 49">
-      
-      <img src="photos/gallery/42.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 42 of 49">
-      
-      <img src="photos/gallery/43.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 43 of 49">
-      
-      <img src="photos/gallery/44.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 44 of 49">
-      
-      <img src="photos/gallery/45.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 45 of 49">
-      
-      <img src="photos/gallery/46.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 46 of 49">
-      
-      <img src="photos/gallery/47.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 47 of 49">
-      
-      <img src="photos/gallery/48.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 48 of 49">
-      
-      <img src="photos/gallery/49.jpg" loading="lazy"
-           alt="6012 Rte 13, photo 49 of 49">
+      <div class="gallery-more">
+        <button type="button" class="btn btn-outline" id="show-all-photos">
+          Show all 49 photos
+        </button>
+      </div>
       
     </div>
   </section>
   
 
-  <section class="facts">
-    <h2>The details</h2>
-    <dl>
-      <dt>Price</dt><dd>$674,900</dd>
-      <dt>MLS</dt><dd>202610284</dd>
-      <dt>Finished area</dt><dd>5,568 sq ft</dd>
-      <dt>Lot</dt><dd>0.58 acres, cleared</dd>
-      <dt>Built</dt><dd>1986</dd>
-      <dt>Title</dt><dd>Freehold</dd>
-      <dt>Heat</dt><dd>Baseboard heaters, Wall-mounted heat pump (electric)</dd>
-      <dt>Water and sewer</dt><dd>Well, septic system</dd>
-      <dt>Parking</dt><dd>Attached heated double garage</dd>
-      <dt>Property taxes</dt><dd>$3,758 per year</dd>
-      <dt>Access</dt><dd>Year-round access</dd>
-    </dl>
+  <section class="section" id="details">
+    <div class="wrap">
+      <p class="kicker">The details</p>
+      <h2>Everything on the record</h2>
+
+      <div class="spec-cols">
+        <div class="spec-group">
+          <h3>The property</h3>
+          <dl>
+            <dt>Price</dt><dd>$674,900</dd>
+            <dt>MLS</dt><dd>202610284</dd>
+            <dt>Finished area</dt><dd>5,568 sq ft</dd>
+            <dt>Bedrooms</dt><dd>7 (5 above grade, 2 below)</dd>
+            <dt>Bathrooms</dt><dd>3 full, 1 half</dd>
+            <dt>Lot</dt><dd>0.58 acres, cleared</dd>
+            <dt>Built</dt><dd>1986</dd>
+            <dt>Storeys</dt><dd>2</dd>
+            <dt>Style</dt><dd>Detached house</dd>
+            <dt>Title</dt><dd>Freehold</dd>
+            <dt>Taxes</dt><dd>$3,758 per year</dd>
+          </dl>
+        </div>
+
+        <div class="spec-group">
+          <h3>Systems and build</h3>
+          <dl>
+            <dt>Heat</dt><dd>Baseboard heaters, Wall-mounted heat pump</dd>
+            <dt>Fuel</dt><dd>Electric</dd>
+            <dt>Water</dt><dd>Well</dd>
+            <dt>Sewer</dt><dd>Septic System</dd>
+            <dt>Foundation</dt><dd>Poured Concrete</dd>
+            <dt>Exterior</dt><dd>Vinyl</dd>
+            <dt>Flooring</dt><dd>Laminate, Tile</dd>
+            <dt>Parking</dt><dd>Attached heated double garage</dd>
+          </dl>
+          <ul class="chips">
+            <li>Oven</li><li>Stove</li><li>Dishwasher</li><li>Dryer</li><li>Washer</li><li>Microwave</li><li>Refrigerator</li>
+          </ul>
+        </div>
+
+        <div class="spec-group">
+          <h3>Grounds and setting</h3>
+          <dl>
+            <dt>View</dt><dd>River view</dd>
+            <dt>Structures</dt><dd>Deck, Patio, Barn</dd>
+            <dt>Features</dt><dd>Rolling, Balcony, Paved driveway</dd>
+            <dt>Access</dt><dd>Year-round access</dd>
+            <dt>Cavendish</dt><dd>15 minutes</dd>
+            <dt>Charlottetown</dt><dd>25 minutes</dd>
+            <dt>Community</dt><dd>School Bus</dd>
+          </dl>
+          <ul class="chips">
+            <li>Golf Course</li><li>Park</li><li>Playground</li><li>Public Transit</li><li>Shopping</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>Request a showing</h2>
-    <p>Enquiries go to the listing agent, Morgan Murphy at RED-ISLE REALTY INC..</p>
-    <form id="lead-form"
-          data-sent="Thanks — your message is on its way to Morgan Murphy at RED-ISLE REALTY INC.."
-          data-failed="That did not send. Please call Morgan Murphy directly at 902-388-0170.">
-      <label>Name <input name="name" required autocomplete="name"></label>
-      <label>Email <input name="email" type="email" required autocomplete="email"></label>
-      <label>Phone <input name="phone" type="tel" autocomplete="tel"></label>
-      <label>Anything you want to ask <textarea name="message" rows="4"></textarea></label>
-      <button type="submit">Send</button>
-      <p id="lead-status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="direct">Or call Morgan Murphy directly: <a href="tel:902-388-0170">902-388-0170</a></p>
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <p class="kicker">Come and see it</p>
+          <h2>Request a showing</h2>
+          <p>Enquiries go straight to the listing agent. No obligation, and no one else gets your details.</p>
+          <div class="agent-card">
+            <p class="agent-name">Morgan Murphy</p>
+            <p class="agent-firm">RED-ISLE REALTY INC.</p>
+            <a class="phone" href="tel:902-388-0170">902-388-0170</a>
+          </div>
+          <a class="official" href="https://www.realtor.ca/real-estate/29725053/6012-rte-13-new-glasgow" target="_blank" rel="noopener">
+            <span class="official-label">The official MLS listing</span>
+            <strong class="official-cta">View 202610284 on REALTOR.ca <span aria-hidden="true">&#8599;</span></strong>
+          </a>
+        </div>
+
+        <form id="lead-form"
+              data-sent="Thanks — your message is on its way to Morgan Murphy at RED-ISLE REALTY INC.."
+              data-failed="That did not send. Please call Morgan Murphy directly at 902-388-0170.">
+          <label>Name <input name="name" required autocomplete="name"></label>
+          <label>Email <input name="email" type="email" required autocomplete="email"></label>
+          <label>Phone <input name="phone" type="tel" autocomplete="tel"></label>
+          <label>Anything you want to ask <textarea name="message" rows="4"></textarea></label>
+          <button type="submit" class="btn btn-primary">Send</button>
+          <p id="lead-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p class="always-disclosed">
-      This property is owner-occupied and has never been rented. There is no rental
-      history and no income figure attached to this listing.
-    </p>
-    <p>MLS 202610284. Listed by Morgan Murphy, RED-ISLE REALTY INC., 902-388-0170, 284 Grafton Street, Charlottetown, Prince Edward Island C1A 1L7.</p>
-    <p>Listing data provided by Prince Edward Island Real Estate Association. <a href="https://www.realtor.ca/real-estate/29725053/6012-rte-13-new-glasgow">View on REALTOR.ca</a>.</p>
-    <p class="fine">This page is published by the property owners to support the listing. It is not a for-sale-by-owner listing.</p>
+    <div class="wrap">
+      <p class="always-disclosed">
+        This property is owner-occupied and has never been rented. There is no rental
+        history and no income figure attached to this listing.
+      </p>
+      <p>MLS 202610284. Listed by Morgan Murphy, RED-ISLE REALTY INC., 902-388-0170, 284 Grafton Street, Charlottetown, Prince Edward Island C1A 1L7.</p>
+      <p>Listing data provided by Prince Edward Island Real Estate Association. <a href="https://www.realtor.ca/real-estate/29725053/6012-rte-13-new-glasgow">View on REALTOR.ca</a>.</p>
+      <p class="fine">This page is published by the property owners to support the listing. It is not a for-sale-by-owner listing.</p>
+    </div>
   </footer>
 </main>
+
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <img id="lb-image" alt="">
+  <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Close photo viewer">&times;</button>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+  <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Next photo">&#8250;</button>
+  <p class="lb-count" id="lb-count"></p>
+</div>
+
+
+<div class="sticky-cta" id="sticky-cta">
+  <p class="sticky-price">$674,900</p>
+  <a class="btn btn-primary" href="#contact">Request a showing</a>
+</div>
 
 <script>// Hosted backend. Posts leads to an HTTP endpoint; analytics is handled by the
 // hosting provider's script, so recordView only needs to tag the session.
@@ -396,6 +1304,106 @@ footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5re
       status.textContent = form.dataset.failed;
     }
   });
+
+  // ---- Gallery -----------------------------------------------------------
+  // The grid holds every photo; the ones past the first screenful ship with
+  // `hidden`, so a lazy <img> inside them is never fetched until asked for.
+  const showAll = document.getElementById("show-all-photos");
+  if (showAll) {
+    showAll.addEventListener("click", () => {
+      document.querySelectorAll("#photo-grid [data-extra]").forEach((shot) => {
+        shot.hidden = false;
+      });
+      showAll.remove();
+    });
+  }
+
+  // ---- Lightbox ----------------------------------------------------------
+  const lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    // One ordered list of every photo. A mosaic tile is not its own photo --
+    // it carries the index of the same shot in this list, so the arrows walk
+    // the whole gallery no matter which thumbnail was clicked.
+    const allShots = Array.from(document.querySelectorAll("#photo-grid .shot img"));
+    const image = document.getElementById("lb-image");
+    const count = document.getElementById("lb-count");
+    let current = 0;
+    let opener = null;
+
+    function show(index) {
+      current = (index + allShots.length) % allShots.length;
+      const shot = allShots[current];
+      image.src = shot.src;
+      image.alt = shot.alt;
+      count.textContent = `${current + 1} of ${allShots.length}`;
+    }
+
+    function open(index, trigger) {
+      opener = trigger;
+      show(index);
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      document.getElementById("lb-close").focus();
+    }
+
+    function close() {
+      lightbox.hidden = true;
+      document.body.style.overflow = "";
+      if (opener) opener.focus();
+    }
+
+    document.querySelectorAll(".shot").forEach((shot) => {
+      shot.addEventListener("click", () => open(Number(shot.dataset.index), shot));
+    });
+
+    document.getElementById("lb-close").addEventListener("click", close);
+    document.getElementById("lb-prev").addEventListener("click", () => show(current - 1));
+    document.getElementById("lb-next").addEventListener("click", () => show(current + 1));
+    // Clicking the backdrop closes; clicking a control inside it must not.
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === image) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === "Escape") close();
+      if (event.key === "ArrowLeft") show(current - 1);
+      if (event.key === "ArrowRight") show(current + 1);
+    });
+  }
+
+  // ---- Motion ------------------------------------------------------------
+  const stillness = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const revealable = document.querySelectorAll(".reveal");
+  if (stillness.matches || !("IntersectionObserver" in window)) {
+    revealable.forEach((element) => element.classList.add("is-in"));
+  } else {
+    // Only now is anything able to reverse the hidden starting state, so only
+    // now is the stylesheet allowed to apply it.
+    document.documentElement.setAttribute("data-reveal", "");
+    const watcher = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          watcher.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px" }
+    );
+    revealable.forEach((element) => watcher.observe(element));
+  }
+
+  // ---- Sticky call-to-action --------------------------------------------
+  // Hidden until the hero is off screen: on a phone the hero already carries
+  // the price and the button, and a bar over top of them is just clutter.
+  const sticky = document.getElementById("sticky-cta");
+  const hero = document.querySelector(".hero");
+  if (sticky && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(
+      ([entry]) => sticky.classList.toggle("is-shown", !entry.isIntersecting),
+      { threshold: 0 }
+    ).observe(hero);
+  }
 })();
 </script>
 </body></html>
