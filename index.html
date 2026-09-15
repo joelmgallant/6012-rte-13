@@ -1222,17 +1222,15 @@ footer a { color: var(--forest); }
   const ENDPOINT = window.BLAST_LEAD_ENDPOINT || "";
 
   async function submitLead(lead) {
-    if (!ENDPOINT) {
-      try {
-        const pending = JSON.parse(localStorage.getItem("blast:leads") || "[]");
-        pending.push({ ...lead, at: new Date().toISOString() });
-        localStorage.setItem("blast:leads", JSON.stringify(pending));
-      } catch (error) {
-        console.warn("lead not stored", error);
-        return { ok: false };
-      }
-      return { ok: true };
-    }
+    // With no endpoint there is no way to deliver this, so the only honest
+    // answer is failure -- the page's failure copy names the agent's phone
+    // number, which is a real way through.
+    //
+    // This used to stash the lead in the visitor's own localStorage and report
+    // ok. Nobody can read a stranger's browser, so every enquiry was told
+    // "your message is on its way" and then silently dropped. A dead letter
+    // box that reports success is worse than no form at all.
+    if (!ENDPOINT) return { ok: false };
     try {
       const response = await fetch(ENDPOINT, {
         method: "POST",
