@@ -1216,10 +1216,15 @@ footer a { color: var(--forest); }
   <a class="btn btn-primary" href="#contact">Request a showing</a>
 </div>
 
-<script>// Hosted backend. Posts leads to an HTTP endpoint; analytics is handled by the
-// hosting provider's script, so recordView only needs to tag the session.
+<script>window.BLAST_CONFIG = {"events": "https://blast-events.joelmgallant.workers.dev/e", "lead": ""};</script>
+<script>// Hosted backend. Leads go to an HTTP endpoint; analytics events go to the
+// ingest Worker as a beacon. Both endpoints come from data/config.json and
+// are rendered into the page as window.BLAST_CONFIG, so moving either one is
+// a config edit and a rebuild.
 (function () {
-  const ENDPOINT = window.BLAST_LEAD_ENDPOINT || "";
+  const CONFIG = window.BLAST_CONFIG || {};
+  const LEAD_ENDPOINT = CONFIG.lead || "";
+  const EVENTS_ENDPOINT = CONFIG.events || "";
 
   async function submitLead(lead) {
     // With no endpoint there is no way to deliver this, so the only honest
@@ -1230,9 +1235,9 @@ footer a { color: var(--forest); }
     // ok. Nobody can read a stranger's browser, so every enquiry was told
     // "your message is on its way" and then silently dropped. A dead letter
     // box that reports success is worse than no form at all.
-    if (!ENDPOINT) return { ok: false };
+    if (!LEAD_ENDPOINT) return { ok: false };
     try {
-      const response = await fetch(ENDPOINT, {
+      const response = await fetch(LEAD_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead),
@@ -1244,21 +1249,102 @@ footer a { color: var(--forest); }
     }
   }
 
-  async function recordView(meta) {
+  function recordEvent(name, meta) {
+    if (!EVENTS_ENDPOINT) return;
+    const payload = JSON.stringify({
+      event: name,
+      src: (meta && meta.src) || "direct",
+      track: (meta && meta.track) || null,
+      visit: (meta && meta.visit) || null,
+      detail: (meta && meta.detail) || null,
+    });
+    // text/plain is a CORS-safelisted content type, which keeps this a simple
+    // request that never preflights. sendBeacon cannot answer a preflight, so
+    // declaring application/json here would drop every event silently, with
+    // nothing in the console to say so. The Worker parses the body as JSON
+    // regardless of the declared type.
     try {
-      sessionStorage.setItem("blast:src", meta.src || "direct");
+      const blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
+      if (navigator.sendBeacon && navigator.sendBeacon(EVENTS_ENDPOINT, blob)) {
+        return;
+      }
     } catch (error) {
-      // Private browsing. Attribution is nice to have, not load-bearing.
+      // Fall through to fetch.
+    }
+    try {
+      // keepalive so an event fired on the way out still leaves the page.
+      fetch(EVENTS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
+        body: payload,
+        keepalive: true,
+        mode: "no-cors",
+      }).catch(() => {});
+    } catch (error) {
+      // Analytics is never load-bearing. A visitor who cannot be counted
+      // must still be able to read the page and phone the agent.
     }
   }
 
-  window.BLAST_BACKEND = { submitLead, recordView };
+  window.BLAST_BACKEND = { submitLead, recordEvent };
 })();
 </script>
 <script>(function () {
   const params = new URLSearchParams(location.search);
   const source = params.get("src") || "direct";
   let track = params.get("track") === "investor" ? "investor" : "family";
+
+  // A per-visit id, held in sessionStorage so it dies with the tab. Not a
+  // cookie and never persistent: it exists to tell "one person who looked at
+  // twelve photos" apart from "twelve people", and nothing else. Nothing
+  // about who the visitor is is collected here or by the ingest endpoint,
+  // which is what keeps a consent banner off this page.
+  function visitId() {
+    const fresh = () => {
+      try {
+        if (window.crypto && crypto.randomUUID) {
+          return crypto.randomUUID().replace(/-/g, "").slice(0, 24);
+        }
+      } catch (error) {
+        // Fall through to Math.random.
+      }
+      let id = "";
+      while (id.length < 24) id += Math.random().toString(36).slice(2);
+      return id.slice(0, 24);
+    };
+    try {
+      let id = sessionStorage.getItem("blast:visit");
+      if (!id) {
+        id = fresh();
+        sessionStorage.setItem("blast:visit", id);
+      }
+      return id;
+    } catch (error) {
+      // Private browsing. Every event this visit sends looks like its own
+      // visit, which overcounts visitors rather than losing the event.
+      return fresh();
+    }
+  }
+
+  const visit = visitId();
+  const fired = new Set();
+
+  function emit(name, detail) {
+    try {
+      Promise.resolve(
+        window.BLAST_BACKEND.recordEvent(name, { src: source, track, visit, detail })
+      ).catch(() => {});
+    } catch (error) {
+      // A backend that throws must not take the page down with it.
+    }
+  }
+
+  // For events where the tenth occurrence tells us nothing the first did not.
+  function emitOnce(name, detail) {
+    if (fired.has(name)) return;
+    fired.add(name);
+    emit(name, detail);
+  }
 
   function applyTrack(next) {
     track = next;
@@ -1275,16 +1361,22 @@ footer a { color: var(--forest); }
   }
 
   document.querySelectorAll(".track-toggle button").forEach((button) => {
-    button.addEventListener("click", () => applyTrack(button.dataset.track));
+    button.addEventListener("click", () => {
+      const next = button.dataset.track;
+      if (next === track) return;
+      applyTrack(next);
+      // The page's whole premise is that one property has two stories. This
+      // is the event that says which one a visitor wanted.
+      emit("track_switch", next);
+    });
   });
   applyTrack(track);
 
-  // Attribution is best effort. A backend that rejects must not produce an
-  // unhandled rejection in a visitor's console.
-  Promise.resolve(window.BLAST_BACKEND.recordView({ src: source, track })).catch(() => {});
+  emit("view");
 
   const form = document.getElementById("lead-form");
   const status = document.getElementById("lead-status");
+  form.addEventListener("focusin", () => emitOnce("form_start"), { once: true });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const submit = form.querySelector("button[type=submit]");
@@ -1301,6 +1393,16 @@ footer a { color: var(--forest); }
       submit.disabled = false;
       status.textContent = form.dataset.failed;
     }
+    emit("form_submit", result.ok ? "delivered" : "failed");
+  });
+
+  // Intent that leaves the page: both are a visitor choosing to make contact
+  // or to go and verify the listing, and both are worth more than a scroll.
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener("click", () => emit("phone_click"));
+  });
+  document.querySelectorAll('a[href*="realtor.ca"]').forEach((link) => {
+    link.addEventListener("click", () => emit("realtor_click"));
   });
 
   // ---- Gallery -----------------------------------------------------------
@@ -1313,6 +1415,7 @@ footer a { color: var(--forest); }
         shot.hidden = false;
       });
       showAll.remove();
+      emit("photos_expand");
     });
   }
 
@@ -1342,6 +1445,7 @@ footer a { color: var(--forest); }
       lightbox.hidden = false;
       document.body.style.overflow = "hidden";
       document.getElementById("lb-close").focus();
+      emitOnce("gallery_open");
     }
 
     function close() {
@@ -1398,7 +1502,12 @@ footer a { color: var(--forest); }
   const hero = document.querySelector(".hero");
   if (sticky && hero && "IntersectionObserver" in window) {
     new IntersectionObserver(
-      ([entry]) => sticky.classList.toggle("is-shown", !entry.isIntersecting),
+      ([entry]) => {
+        sticky.classList.toggle("is-shown", !entry.isIntersecting);
+        // The hero leaving the viewport is the closest thing to "read past
+        // the fold" that costs no scroll listener.
+        if (!entry.isIntersecting) emitOnce("scrolled_past_hero");
+      },
       { threshold: 0 }
     ).observe(hero);
   }
